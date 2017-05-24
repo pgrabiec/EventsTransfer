@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello Facebook</title>
+</head>
+<body>
+<h3>Hello, <span th:text="${facebookProfile.name}">Some User</span>!</h3>
+
+<h4>Here is your events:</h4>
+
+
+<form action="/submit" th:object ="${checked}" method="post" >
+
+<div th:each="event,iter :${events}">
+    <b th:text="${event.getName()}">from</b> description:
+    <p>Date : <span th:text="${#dates.format(event.getStartTime(), 'dd-MM-YYYY  hh:mm')}">start_time</span></p>
+    <p th:text="${event.description}">message text</p>
+    <input type="checkbox" th:field = "*{events}" th:value="${iter.index}"/>
+    <hr/>
+</div>
+
+    <p><button type="submit">Send to Calendar</button></p>
+
+</form>
+
+</body>
+</html>
