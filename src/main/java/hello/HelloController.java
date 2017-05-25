@@ -2,6 +2,7 @@ package hello;
 
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.facebook.api.*;
+import org.springframework.social.google.api.Google;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
@@ -9,7 +10,6 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import static java.lang.System.currentTimeMillis;
-import static java.lang.System.setOut;
 
 import java.util.Date;
 
@@ -33,6 +33,7 @@ public class HelloController {
         if (connectionRepository.findPrimaryConnection(Facebook.class) == null) {
             return "redirect:/connect/facebook";
         }
+
 
         String [] fields = { "id" , "name" , "email",  "first_name", "last_name" };
         model.addAttribute("facebookProfile", facebook.fetchObject("me", User.class, fields));

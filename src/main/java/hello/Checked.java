@@ -1,8 +1,5 @@
 package hello;
 
-import org.springframework.social.facebook.api.Event;
-import org.springframework.social.facebook.api.PagedList;
-
 import java.util.List;
 
 /**
