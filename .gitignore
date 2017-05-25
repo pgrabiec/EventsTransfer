@@ -24,3 +24,6 @@ hs_err_pid*
 # Intellij Idea files
 EventsTransfer.iml
 .idea
+.gradle
+
+.gradle/
