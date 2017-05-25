@@ -27,3 +27,5 @@ EventsTransfer.iml
 
 .gradle/
 build/
+target/
+out/
