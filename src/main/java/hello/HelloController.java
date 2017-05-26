@@ -87,22 +87,21 @@ public class HelloController {
         if (connectionRepository.findPrimaryConnection(Google.class) == null) {
             return "redirect:/connect/google";
         }
-
-        try {
-            HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        } catch (GeneralSecurityException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        GoogleCredential credential = new GoogleCredential().setAccessToken(google.getAccessToken());
-        Calendar service = new com.google.api.services.calendar.Calendar.Builder(
-                HTTP_TRANSPORT, JSON_FACTORY, credential)
-                .setApplicationName(APPLICATION_NAME)
-                .build();
-
-
         if (checked.getEvents() != null) {
+            try {
+                HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+            } catch (GeneralSecurityException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            GoogleCredential credential = new GoogleCredential().setAccessToken(google.getAccessToken());
+            Calendar service = new com.google.api.services.calendar.Calendar.Builder(
+                    HTTP_TRANSPORT, JSON_FACTORY, credential)
+                    .setApplicationName(APPLICATION_NAME)
+                    .build();
+
+            
             for (Integer b : checked.getEvents()) {
                 Event event = events.get(b);
 
