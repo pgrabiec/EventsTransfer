@@ -38,15 +38,12 @@ public class GoogleController {
         System.out.println(": "+user.getGivenName() +" : "+ user.getEmailAddresses() +" : "+ user.getFamilyName());
         model.addAttribute("googleProfile", user);
 
-        org.springframework.social.google.api.calendar.Calendar calendar = google.calendarOperations().getCalendar("primary");
-
-
         CalendarOperations operations = google.calendarOperations();
 
         EventPage page = operations.eventListQuery("primary").getPage();
 
         for (Event event : page.getItems()) {
-            System.out.println("Google event: " + event.getSummary());
+            System.out.println("Google event: " + event.getSummary() +" "+ event.getStart().getDateTime().toString());
         }
 
         return "google";

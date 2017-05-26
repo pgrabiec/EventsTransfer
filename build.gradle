@@ -31,6 +31,6 @@ dependencies {
     compile "org.springframework.social:spring-social-google:latest.release"
 
 
-    //compile ('com.google.api-client:google-api-client:1.22.0')
-    //compile 'com.google.apis:google-api-services-calendar:v3-rev246-1.22.0'
+    compile ('com.google.api-client:google-api-client:1.22.0')
+    compile 'com.google.apis:google-api-services-calendar:v3-rev246-1.22.0'
 }
