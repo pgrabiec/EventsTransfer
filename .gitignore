@@ -29,3 +29,6 @@ EventsTransfer.iml
 build/
 target/
 out/
+gradle/
+gradlew
+gradlew.bat
