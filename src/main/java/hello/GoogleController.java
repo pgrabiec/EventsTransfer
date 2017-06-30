@@ -11,8 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Calendar;
-
 @Controller
 @RequestMapping("/google")
 public class GoogleController {
@@ -35,7 +33,7 @@ public class GoogleController {
 
         System.out.println(google.isAuthorized());
 
-        System.out.println(": "+user.getGivenName() +" : "+ user.getEmailAddresses() +" : "+ user.getFamilyName());
+        System.out.println(": " + user.getGivenName() + " : " + user.getEmailAddresses() + " : " + user.getFamilyName());
         model.addAttribute("googleProfile", user);
 
         CalendarOperations operations = google.calendarOperations();
@@ -43,7 +41,7 @@ public class GoogleController {
         EventPage page = operations.eventListQuery("primary").getPage();
 
         for (Event event : page.getItems()) {
-            System.out.println("Google event: " + event.getSummary() +" "+ event.getStart().getDateTime().toString());
+            System.out.println("Google event: " + event.getSummary() + " " + event.getStart().getDateTime().toString());
         }
 
         return "google";

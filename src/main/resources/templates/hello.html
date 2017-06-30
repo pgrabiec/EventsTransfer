@@ -8,17 +8,19 @@
 <h4>Here is your events:</h4>
 
 
-<form action="/submit" th:object ="${checked}" method="post" >
+<form action="/submit" th:object="${checked}" method="post">
 
-<div th:each="event,iter :${events}">
-    <b th:text="${event.getName()}">from</b> description:
-    <p>Date : <span th:text="${#dates.format(event.getStartTime(), 'dd-MM-YYYY  hh:mm')}">start_time</span></p>
-    <p th:text="${event.description}">message text</p>
-    <input type="checkbox" th:field = "*{events}" th:value="${iter.index}"/>
-    <hr/>
-</div>
+    <div th:each="event,iter :${events}">
+        <b th:text="${event.getName()}">from</b> description:
+        <p>Date : <span th:text="${#dates.format(event.getStartTime(), 'dd-MM-YYYY  hh:mm')}">start_time</span></p>
+        <p th:text="${event.description}">message text</p>
+        <input type="checkbox" th:field="*{events}" th:value="${iter.index}"/>
+        <hr/>
+    </div>
 
-    <p><button type="submit">Send to Calendar</button></p>
+    <p>
+        <button type="submit">Send to Calendar</button>
+    </p>
 
 </form>
 

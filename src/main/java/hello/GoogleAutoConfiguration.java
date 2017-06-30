@@ -1,7 +1,5 @@
 package hello;
 
-import hello.GoogleProperties;
-
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -26,7 +24,7 @@ import org.springframework.social.google.api.Google;
 import org.springframework.social.google.connect.GoogleConnectionFactory;
 
 @Configuration
-@ConditionalOnClass({ SocialConfigurerAdapter.class, GoogleConnectionFactory.class })
+@ConditionalOnClass({SocialConfigurerAdapter.class, GoogleConnectionFactory.class})
 @ConditionalOnProperty(prefix = "spring.social.google", name = "app-id")
 @AutoConfigureBefore(SocialWebAutoConfiguration.class)
 @AutoConfigureAfter(WebMvcAutoConfiguration.class)
@@ -49,10 +47,10 @@ public class GoogleAutoConfiguration {
         @Scope(value = "request", proxyMode = ScopedProxyMode.INTERFACES)
         public Google google(ConnectionRepository repository) {
             Connection connection = repository.findPrimaryConnection(Google.class);
-            return connection != null ? (Google)connection.getApi() : null;
+            return connection != null ? (Google) connection.getApi() : null;
         }
 
-        @Bean(name = { "connect/googleConnect", "connect/googleConnected" })
+        @Bean(name = {"connect/googleConnect", "connect/googleConnected"})
         @ConditionalOnProperty(prefix = "spring.social", name = "auto-connection-views")
         public GenericConnectionStatusView googleConnectView() {
             return new GenericConnectionStatusView("google", "Google");
